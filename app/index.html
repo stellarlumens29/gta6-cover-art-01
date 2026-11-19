@@ -1,0 +1,83 @@
+<!-- Recorded re-attribution pass — 19 Nov 2026 (sealed recording session). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice City Multi-Panel Photo Composer — 4 Photo Slots, 3 Export Sizes, 100% Local</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>VICE CITY <span>Multi-Panel Photo Composer</span></h1>
+    <p class="tag">4 photo slots &middot; 3 export sizes &middot; 100% local &mdash; your photos never leave this machine</p>
+  </div>
+  <div class="local-badge" title="Everything runs in this browser. No upload, no network.">100% LOCAL &#9679; OFFLINE</div>
+</header>
+<main class="app">
+  <section class="controls" aria-label="Cover editor">
+    <h2>1 &middot; Photos <span class="hint">click a slot, then drag the cover to reposition it</span></h2>
+    <div class="slots" id="slots"></div>
+    <div class="slot-tools">
+      <label>Zoom <input id="zoom" type="range" min="1" max="3" step="0.05" value="1"></label>
+      <label>Pan X <input id="panx" type="range" min="-1" max="1" step="0.05" value="0"></label>
+      <label>Pan Y <input id="pany" type="range" min="-1" max="1" step="0.05" value="0"></label>
+      <div class="row">
+        <button id="focal-top" type="button">Focal: top</button>
+        <button id="focal-center" type="button">Focal: centre</button>
+        <button id="swap-left" type="button" title="Move slot left">&larr; Swap</button>
+        <button id="swap-right" type="button" title="Move slot right">Swap &rarr;</button>
+      </div>
+    </div>
+
+    <h2>2 &middot; Art direction</h2>
+    <div class="presets" id="presets" role="group" aria-label="Preset"></div>
+    <div class="row">
+      <button data-ratio="square" type="button" class="ratio-btn">Square 1:1</button>
+      <button data-ratio="portrait" type="button" class="ratio-btn">Portrait 4:5</button>
+      <button data-ratio="wide" type="button" class="ratio-btn">Wide 16:9</button>
+    </div>
+
+    <h2>3 &middot; Words</h2>
+    <label>Headline <input id="headline" type="text" maxlength="48" value="Sunset Heist"></label>
+    <label>Subtitle <input id="subtitle" type="text" maxlength="60" value="One last job on Ocean Drive"></label>
+    <label>Issue No. <input id="issue" type="text" maxlength="4" value="07"></label>
+    <label>Headline alignment
+      <select id="align">
+        <option value="left" selected>Left</option>
+        <option value="center">Centre</option>
+        <option value="right">Right</option>
+      </select>
+    </label>
+
+    <h2>4 &middot; Grade</h2>
+    <label>Warmth <input id="grade-warmth" type="range" min="-30" max="30" step="1" value="0"></label>
+    <label>Contrast <input id="grade-contrast" type="range" min="0.8" max="1.4" step="0.02" value="1"></label>
+    <label>Saturation <input id="grade-saturation" type="range" min="0.6" max="1.8" step="0.05" value="1"></label>
+
+    <h2>5 &middot; Export PNG</h2>
+    <div class="exports">
+      <button id="export-square" type="button">PNG 1080 &times; 1080</button>
+      <button id="export-portrait" type="button">PNG 1080 &times; 1350</button>
+      <button id="export-wide" type="button">PNG 1920 &times; 1080</button>
+    </div>
+    <p id="status" role="status">Load a photo to begin &mdash; or try a sample below.</p>
+    <div class="row">
+      <button id="load-samples" type="button">Load 2 sample photos</button>
+      <button id="load-one-sample" type="button">Load 1 sample (hero + detail crops)</button>
+    </div>
+    <p class="fine">Offline after load. No Rockstar logo, artwork or fonts &mdash; all art, lettering and the
+    sunset, skyline and halftone panels are drawn originally in this app. Sample photos are the kit&rsquo;s
+    free-to-use AI-made images.</p>
+  </section>
+
+  <section class="preview" aria-label="Cover preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover preview. Drag to reposition the photo under the cursor."></canvas>
+    <p class="preview-note">Preview: <strong id="ratio-label">Square 1080 &times; 1080</strong> &middot; drag the photo to reposition &middot; scroll over it to zoom</p>
+    <p id="qa" class="qa" hidden></p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
